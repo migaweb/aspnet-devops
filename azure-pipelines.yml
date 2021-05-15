@@ -13,7 +13,7 @@ variables:
   dockerRegistryServiceConnection: 'b43ce0d2-13c7-4b07-91c4-4d2e3de49582'
   imageRepository: 'mgshoppingweb'
   containerRegistry: 'mgshoppingwebacr.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/Shopping/Dockerfile'
+  dockerfilePath: '$(Build.SourcesDirectory)/Shopping/Shopping.API/Dockerfile'
   tag: '$(Build.BuildId)'
 
   # Agent VM image name
@@ -35,5 +35,6 @@ stages:
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
+        buildContext: $(Build.SourcesDirectory)/Shopping
         tags: |
           $(tag)
